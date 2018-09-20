@@ -12,31 +12,62 @@ public class MainController {
 
 	public static void main(String[] args) {
 		
-		ConsoleView aView = new ConsoleView();
-		TextConnection aTextConnection = new TextConnection();
-		List<String> aFile = new ArrayList<String>();
+		Student students[] = new Student[4];
 		
-		aFile = aTextConnection.getFile("C:\\Users\\mroml\\Dropbox\\Documents\\Coding\\Java\\StudentRecords", "StudentRecords.csv");
+		Student aStudent1 = new UndergradStudent();
+		Student aStudent2 = new Student();
+		Student aStudent3 = new Student();
+		Student aStudent4 = new Student();
+
+		aStudent1.setFirstName("Jim");
+		aStudent2.setFirstName("Sarah");
+		aStudent1.setFirstName("Cathy");
+		aStudent1.setFirstName("James");
 		
-		String[] studentStrings = null;
-		List<Student> listOfStudents = new ArrayList<Student>();
-		Student aStudent = null;
+		students[0] = aStudent1;
+		students[1] = aStudent2;
+		students[2] = aStudent3;
+		students[3] = aStudent4;
 		
-		//Prints out the each string in the aFile list.
-		for(String s: aFile) {
-						
-			studentStrings = s.split(",");
-			aView.print("Student ID: " + studentStrings[0]);
-			aView.print("First Name: " + studentStrings[1]);
-			aView.print("Last Name: " + studentStrings[2]);
-			aView.print("Commutes: " + studentStrings[3] + "\n");
-			
-			//aView.print("Student: " + s);
-			
+		int i = 0;
+		
+		while(i < 4) {
+			System.out.println(students[i].toString());
+			System.out.println(students[i].skipClass());
+			i++;
 		}
 	}
-
 }
+
+//Program Version 1
+
+/*
+ConsoleView aView = new ConsoleView();
+TextConnection aTextConnection = new TextConnection();
+List<String> aFile = new ArrayList<String>();
+
+aFile = aTextConnection.getFile("C:\\Users\\mroml\\Dropbox\\Documents\\Coding\\Java\\StudentRecords", "StudentRecords.csv");
+
+String[] studentStrings = null;
+List<Student> listOfStudents = new ArrayList<Student>();
+Student aStudent = null;
+
+//Prints out the each string in the aFile list.
+for(String s: aFile) {
+				
+	studentStrings = s.split(",");
+	aView.print("Student ID: " + studentStrings[0]);
+	aView.print("First Name: " + studentStrings[1]);
+	aView.print("Last Name: " + studentStrings[2]);
+	aView.print("Commutes: " + studentStrings[3] + "\n");
+	
+	//aView.print("Student: " + s);
+	
+}
+*/
+
+// Program version 2
+
 /*
 // Create Professor Objects from the Professor class.
 Professor aProfessor1 = new Professor();
@@ -82,6 +113,8 @@ studentArray[2] = aStudent3;
 studentArray[3] = aStudent4;
 studentArray[4] = aStudent5;
 */
+
+// Old way of printing out information.
 
 /*
 *aView.print(aStudent1.getId() + "");
