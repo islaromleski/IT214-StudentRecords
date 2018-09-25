@@ -12,7 +12,44 @@ public class MainController {
 
 	public static void main(String[] args) {
 		
-		Student students[] = new Student[4];
+		ConsoleView aView = new ConsoleView();
+		TextConnection aTextConnection = new TextConnection();
+
+		List<String> aFile = new ArrayList<String>();
+
+		aFile = aTextConnection.getFile("C:\\Users\\mroml\\Documents\\Coding Projects\\Java\\StudentRecords", "StudentRecords.csv");
+
+		String[] studentStrings = null;
+		List<Student> listOfStudents = new ArrayList<Student>();
+		Student aStudent = null;
+		
+		/*
+		//Prints out the each string in the aFile list.
+		for(String s: aFile) {
+						
+			studentStrings = s.split(",");
+			aView.print("Student ID: " + studentStrings[0]);
+			aView.print("First Name: " + studentStrings[1]);
+			aView.print("Last Name: " + studentStrings[2]);
+			aView.print("Commutes: " + studentStrings[3] + "\n");
+		}
+		*/
+		
+		for(String s : aFile) {
+			studentStrings = s.split(",");
+			aStudent = new Student();
+			aStudent.setStudentId(Integer.parseInt(studentStrings[0]));
+			aStudent.setFirstName(studentStrings[1]);
+			aStudent.setLastName(studentStrings[2]);
+			aStudent.setIsCommuter(Boolean.parseBoolean(studentStrings[3]));
+			listOfStudents.add(aStudent);
+		}
+		
+		for (Student s : listOfStudents) {
+			aView.print(s.toString() + "**");
+		}
+		
+		/*Student students[] = new Student[4];
 		
 		Student aStudent1 = new UndergradStudent();
 		Student aStudent2 = new Student();
@@ -36,30 +73,14 @@ public class MainController {
 			System.out.println(students[i].skipClass());
 			i++;
 		}
+		*/
 	}
 }
 
 //Program Version 1
 
 /*
-ConsoleView aView = new ConsoleView();
-TextConnection aTextConnection = new TextConnection();
-List<String> aFile = new ArrayList<String>();
 
-aFile = aTextConnection.getFile("C:\\Users\\mroml\\Dropbox\\Documents\\Coding\\Java\\StudentRecords", "StudentRecords.csv");
-
-String[] studentStrings = null;
-List<Student> listOfStudents = new ArrayList<Student>();
-Student aStudent = null;
-
-//Prints out the each string in the aFile list.
-for(String s: aFile) {
-				
-	studentStrings = s.split(",");
-	aView.print("Student ID: " + studentStrings[0]);
-	aView.print("First Name: " + studentStrings[1]);
-	aView.print("Last Name: " + studentStrings[2]);
-	aView.print("Commutes: " + studentStrings[3] + "\n");
 	
 	//aView.print("Student: " + s);
 	
